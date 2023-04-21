@@ -23,7 +23,19 @@
 
 .nav-bar {
   padding: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 64px;
 }
+
 .nav-bar a {
-  margin-left: 48px;
+  background-color: #f77f00;
+  padding: 16px;
+  color: white;
+  font-size: large;
+}
+
+.nav-bar a:hover {
+  background-color: #003049;
+  color: white;
 }
