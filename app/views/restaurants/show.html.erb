@@ -1,10 +1,28 @@
 <div class="resto-show">
   <h2><%= @restaurant.name %></h2>
-  <p>📍<%= @restaurant.address %> ☎️ <%= @restaurant.phone_number %></p>
-  <p class="cat">🧑🏻‍🍳 <%= @restaurant.category.capitalize %></p>
-   <%= link_to "Back to List", restaurants_path  %>
-<h4>Reviews:</h4>
+  <ul>
+  <li>📍<%= @restaurant.address %> ☎️ <%= @restaurant.phone_number %></li>
+  <li class="cat">🧑🏻‍🍳 <%= @restaurant.category.capitalize %></li>
+  </ul>
+<hr>
 
+<div class="reviews">
+  <h4>Reviews from customers</h4>
+  <ul class="review">
+    <% @restaurant.reviews.each do |review, rating| %>
+    <li class="review-content"><%= review.rating %> ⭐️ - <%= review.content %></li>
+    <%=link_to "Delete review", review_path(review),
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+    <% end %>
+  </ul>
+    </div>
 
-<%= render 'shared/form' %>
+<div>
+  <h4>Add New Review</h4>
+  <%= simple_form_for [@restaurant, @review] do |f| %>
+  <%= f.input :content %>
+  <%= f.input :rating %>
+  <%= f.submit "Submit review", class: "btn btn-primary" %>
+<% end %>
+</div>
 </div>
