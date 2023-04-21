@@ -1,0 +1,13 @@
+<div class="resto-list">
+  <h1>Restaurants Near You 🍲</h1>
+  <ul>
+    <% @restaurants.each do |restaurant| %>
+      <li>
+        <h4><%= restaurant.name %></h4>
+        <p class="cat">🧑🏻‍🍳 <%= restaurant.category.capitalize %></p>
+        <p>📍<%= restaurant.address %> ☎️ <%= restaurant.phone_number %></p>
+        <%= link_to "View Restaurant", restaurant_path(restaurant)  %>
+      </li>
+    <% end %>
+  </ul>
+</div>
